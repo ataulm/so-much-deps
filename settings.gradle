@@ -1,0 +1,3 @@
+include ':game'
+include ':cart'
+include ':demo'

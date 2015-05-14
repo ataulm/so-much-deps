@@ -1,0 +1,19 @@
+apply plugin: 'com.android.application'
+
+android {
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionName rootProject.ext.versionName
+        versionCode rootProject.ext.versionCode
+
+        applicationId "com.ataulm.somuchdeps.demo"
+    }
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+}
+
+dependencies {
+    compile project(':cart')
+}
