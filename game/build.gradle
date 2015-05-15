@@ -10,7 +10,6 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     publishNonDefault true
-
     productFlavors {
         red
         blue

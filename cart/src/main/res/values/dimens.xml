@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="smd__cart_padding_left">20dp</dimen>
+  <dimen name="smd__cart_padding_top">48dp</dimen>
+  <dimen name="smd__cart_padding_right">@dimen/smd__cart_padding_left</dimen>
+  <dimen name="smd__cart_padding_bottom">24dp</dimen>
+</resources>

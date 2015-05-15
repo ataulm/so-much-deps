@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/smd__cart_padding_left"
+    android:paddingTop="@dimen/smd__cart_padding_top"
+    android:paddingRight="@dimen/smd__cart_padding_right"
+    android:paddingBottom="@dimen/smd__cart_padding_bottom"
+    android:contentDescription="@null"
+    android:src="@drawable/smd__sticker"
+    tools:ignore="RtlHardcoded" />
+
+</merge>
