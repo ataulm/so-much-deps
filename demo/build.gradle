@@ -15,5 +15,5 @@ android {
 }
 
 dependencies {
-    compile project(':cart')
+    compile project(path: ':cart', configuration: 'redRelease')
 }

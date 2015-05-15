@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
+//    defaultPublishConfig "redRelease"
+
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -8,8 +10,16 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
+
+    publishNonDefault true
+
+    productFlavors {
+        red
+        blue
+    }
 }
 
 dependencies {
-    compile project(':game')
+    redCompile project(path: ':game', configuration: 'redRelease')
+    blueCompile project(path: ':game', configuration: 'blueRelease')
 }
