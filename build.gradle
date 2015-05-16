@@ -2,23 +2,28 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.2.3'
 }
 
-allprojects {
-    version = '0.0.1'
-}
-
 buildscript {
-    repositories { jcenter() }
+    repositories {
+        jcenter()
+    }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.2.2'
-        classpath 'com.novoda:bintray-release:0.2.9'
     }
 }
 
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+
 ext {
-    minSdkVersion = 14
+    minSdkVersion = 16
     targetSdkVersion = 22
     compileSdkVersion = 22
     buildToolsVersion = "22.0.1"
     versionName = "0.0.1"
     versionCode = 1
+    bintrayRelease = 'com.novoda:bintray-release:0.2.9'
 }

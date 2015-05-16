@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath rootProject.ext.bintrayRelease
+    }
+}
+
 apply plugin: 'com.android.library'
 
 android {
@@ -13,5 +22,42 @@ android {
     productFlavors {
         red
         blue
+    }
+}
+
+apply plugin: 'bintray-release'
+publish {
+    userOrg = 'ataulm'
+    groupId = 'com.ataulm'
+    artifactId = 'this is set in publishing.publications.<publication>'
+    bintrayUser = 'ataulm'
+    version = project.version
+    description = 'Contains default resources representing a particular game'
+    website = 'https://github.com/ataulm/so-much-deps'
+
+    publications = ['red', 'blue']
+}
+
+publishing {
+    publications {
+        red(MavenPublication) {
+            it.groupId groupId
+            it.artifactId 'smd-game-red'
+            it.version publish.version
+
+            delegate.artifact "$project.buildDir/outputs/aar/$project.name-${it.name}-release.aar"
+
+            from project.components.android
+        }
+
+        blue(MavenPublication) {
+            it.groupId groupId
+            it.artifactId 'smd-game-blue'
+            it.version publish.version
+
+            delegate.artifact "$project.buildDir/outputs/aar/$project.name-${it.name}-release.aar"
+
+            from project.components.android
+        }
     }
 }
