@@ -7,7 +7,10 @@ Demo relies on a particular flavor of Cart.
 Running:
 
 ```bash
-ataulm-lt:so-much-deps ataulm$ ./gradlew clean game:build game:bintrayUpload cart:build cart:bintrayUpload -PbintrayUser=whatever -PbintrayKey=whatever
+ataulm-lt:so-much-deps ataulm$ ./gradlew clean
+                                       game:build game:bintrayUpload
+                                       cart:build cart:bintrayUpload
+                                       -PbintrayUser=whatever -PbintrayKey=whatever
 ```
 
 will generate the 4 artifacts in your `~/.m2` repo:
