@@ -40,3 +40,5 @@ local.properties
 *.DS_Store
 
 *.orig
+
+*.hprof

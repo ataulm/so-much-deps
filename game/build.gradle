@@ -28,7 +28,7 @@ android {
 apply plugin: 'bintray-release'
 publish {
     userOrg = 'ataulm'
-    description = 'Contains default resources representing a particular game'
+    description = 'Representation of a game'
     website = 'https://github.com/ataulm/so-much-deps'
 
     groupId = 'overridden in publication'
@@ -41,8 +41,9 @@ publish {
 publishing {
     publications {
         red(MavenPublication) {
+            def flavor = "${it.name}"
             it.groupId 'com.ataulm'
-            it.artifactId "smd-${it.artifactId}-${it.name}"
+            it.artifactId "smd-${it.artifactId}-${flavor}"
             it.version rootProject.ext.versionName
 
             delegate.artifact "$project.buildDir/outputs/aar/$project.name-${it.name}-release.aar"
@@ -51,8 +52,9 @@ publishing {
         }
 
         blue(MavenPublication) {
+            def flavor = "${it.name}"
             it.groupId 'com.ataulm'
-            it.artifactId "smd-${it.artifactId}-${it.name}"
+            it.artifactId "smd-${it.artifactId}-${flavor}"
             it.version rootProject.ext.versionName
 
             delegate.artifact "$project.buildDir/outputs/aar/$project.name-${it.name}-release.aar"

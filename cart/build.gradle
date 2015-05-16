@@ -46,23 +46,43 @@ publish {
 publishing {
     publications {
         red(MavenPublication) {
+            def flavor = "${it.name}"
             it.groupId 'com.ataulm'
-            it.artifactId "smd-${it.artifactId}-${it.name}"
+            it.artifactId "smd-${it.artifactId}-${flavor}"
             it.version rootProject.ext.versionName
 
             delegate.artifact "$project.buildDir/outputs/aar/$project.name-${it.name}-release.aar"
 
             from project.components.android
+
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+
+                def dependencyNode = dependenciesNode.appendNode('dependency')
+                dependencyNode.appendNode('groupId', 'com.ataulm')
+                dependencyNode.appendNode('artifactId', "smd-game-${flavor}")
+                dependencyNode.appendNode('version', rootProject.ext.versionName)
+            }
         }
 
         blue(MavenPublication) {
+            def flavor = "${it.name}"
             it.groupId 'com.ataulm'
-            it.artifactId "smd-${it.artifactId}-${it.name}"
+            it.artifactId "smd-${it.artifactId}-${flavor}"
             it.version rootProject.ext.versionName
 
             delegate.artifact "$project.buildDir/outputs/aar/$project.name-${it.name}-release.aar"
 
             from project.components.android
+
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+
+                def dependencyNode = dependenciesNode.appendNode('dependency')
+                dependencyNode.appendNode('groupId', 'com.ataulm')
+                dependencyNode.appendNode('artifactId', "smd-game-${flavor}")
+                dependencyNode.appendNode('version', rootProject.ext.versionName)
+            }
         }
     }
 }
