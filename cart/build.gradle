@@ -56,12 +56,25 @@ publishing {
             from project.components.android
 
             pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
+                Node root = asNode()
+                def rootDependencies = root.get('dependencies')
+                if (rootDependencies) {
+                    root.remove(rootDependencies)
+                }
 
-                def dependencyNode = dependenciesNode.appendNode('dependency')
-                dependencyNode.appendNode('groupId', 'com.ataulm')
-                dependencyNode.appendNode('artifactId', "smd-game-${flavor}")
-                dependencyNode.appendNode('version', rootProject.ext.versionName)
+                Node dependenciesNode = root.appendNode('dependencies')
+                Node gameNode = dependenciesNode.appendNode('dependency')
+                gameNode.appendNode('groupId', 'com.ataulm')
+                gameNode.appendNode('artifactId', "smd-game-${flavor}")
+                gameNode.appendNode('version', rootProject.ext.versionName)
+
+                // add all the regular (non-project) dependencies
+                configurations.compile.allDependencies.each {
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', it.group)
+                    dependencyNode.appendNode('artifactId', it.name)
+                    dependencyNode.appendNode('version', it.version)
+                }
             }
         }
 
@@ -76,12 +89,25 @@ publishing {
             from project.components.android
 
             pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
+                Node root = asNode()
+                def rootDependencies = root.get('dependencies')
+                if (rootDependencies) {
+                    root.remove(rootDependencies)
+                }
 
-                def dependencyNode = dependenciesNode.appendNode('dependency')
-                dependencyNode.appendNode('groupId', 'com.ataulm')
-                dependencyNode.appendNode('artifactId', "smd-game-${flavor}")
-                dependencyNode.appendNode('version', rootProject.ext.versionName)
+                Node dependenciesNode = root.appendNode('dependencies')
+                Node gameNode = dependenciesNode.appendNode('dependency')
+                gameNode.appendNode('groupId', 'com.ataulm')
+                gameNode.appendNode('artifactId', "smd-game-${flavor}")
+                gameNode.appendNode('version', rootProject.ext.versionName)
+
+                // add all the regular (non-project) dependencies
+                configurations.compile.allDependencies.each {
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', it.group)
+                    dependencyNode.appendNode('artifactId', it.name)
+                    dependencyNode.appendNode('version', it.version)
+                }
             }
         }
     }
